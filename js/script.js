@@ -24,7 +24,8 @@ $(".button").on('click', function(){
 	if($('#player2').hasClass('active'))
 		$('#player2').removeClass('active')
 	for(let i=0; i < the_boxes.length; i++)
-	{
+	{   
+        $(the_boxes[i]).css("pointer-events", "auto");
 		if($(the_boxes[i]).hasClass('box-filled-1'))
 		{
 			$(the_boxes[i]).removeClass('box-filled-1');
@@ -42,9 +43,9 @@ $(".button").on('click', function(){
 $(".box").hover(function(){
 	    if(!($(this).hasClass('box-filled-1') || $(this).hasClass('box-filled-2'))){
 		    if(playO_turn)
-				$(this).css("background-image", "url(img/o.svg)");
+				$(this).css("background-image", "url(./img/o.svg)");
 			else
-				$(this).css("background-image", "url(img/x.svg)");
+				$(this).css("background-image", "url(./img/x.svg)");
 			}
 	    }, function(){
 	    if(!($(this).hasClass('box-filled-1') || $(this).hasClass('box-filled-2')))
@@ -59,7 +60,7 @@ $(".box").click(function(){
 	    $('#player1').removeClass('active');
 	    $('#player2').addClass('active');
 		$(this).addClass('box-filled-1');
-		$(this).css("background-image", "url(img/o.svg)");
+		$(this).css("background-image", "url(./img/o.svg)");
 		playO_turn = false;
 	}
 	else
@@ -67,9 +68,10 @@ $(".box").click(function(){
 		$('#player2').removeClass('active');
 	    $('#player1').addClass('active');
 		$(this).addClass('box-filled-2');
-		$(this).css("background-image", "url(img/x.svg)");
+		$(this).css("background-image", "url(./img/x.svg)");
 		playO_turn = true;
 	}
+	$(this).css("pointer-events", "none");
 	win_state();
 });
 
